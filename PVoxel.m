@@ -195,10 +195,8 @@ if bilinear == 0
     end
 else
     Ptemp=[0 0 0 0];
-    p1temp=Ptemp;
-    p2temp=Ptemp;
     Ttemp=[0 0 0 0];
-    ZWDtemp
+    ZWDtemp=[0 0 0 0];
     for i=1:4
         if H==4000
             Ptemp(i)=P04(i);
