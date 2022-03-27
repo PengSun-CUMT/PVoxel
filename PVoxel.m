@@ -171,9 +171,9 @@ if bilinear == 0
         elseif(H>10000 && H<15000)
             dh1=H-10000;
             dh2=H-15000;
-            P1=P10*exp(-ct*dh1/T10);%Tv~=T at 10 km;
-            P2=P15*exp(-ct*dh2/T15);%Tv~=T at 15 km;
             bt=btvoxel(1,1);
+            P1=P10*(1-bt*dh1/T10)^(ct/bt);
+            P2=P15*(1-bt*dh2/T15)^(ct/bt);
             T=T10-bt*dh1;
         end
         Q1=1/dh1/(1/dh1+1/abs(dh2));
@@ -233,8 +233,8 @@ else
                 bt=btvoxel(1,i);
                 dh1=H-10000;
                 dh2=H-15000;
-                p1=P10(i)*exp(-ct*dh1/T10(i));%Tv~=T at 10 km;
-                p2=P15(i)*exp(-ct*dh2/T15(i));%Tv~=T at 15 km;
+				p1=P10(i)*(1-bt*dh1/T10(i))^(ct/bt);
+                p2=P15(i)*(1-bt*dh2/T15(i))^(ct/bt);
                 Ttemp(i)=T10(i)-bt*dh1;
             end
             Q1=1/dh1/(1/dh1+1/abs(dh2));
